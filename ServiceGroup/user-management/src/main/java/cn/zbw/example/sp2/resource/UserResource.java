@@ -1,6 +1,7 @@
 package cn.zbw.example.sp2.resource;
 
 import cn.zbw.example.sp2.entity.User;
+import cn.zbw.example.sp2.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.quarkus.hibernate.reactive.panache.Panache;
@@ -19,6 +20,9 @@ import java.util.List;
 @Path("/user")
 public class UserResource {
 
+    @Inject
+    UserService userService;
+
     private static final Logger LOGGER = Logger.getLogger(UserResource.class.getName());
 
 
@@ -30,7 +34,7 @@ public class UserResource {
     @GET
     @Path("{id}")
     public Uni<User> findById(@RestPath Long id) {
-        return User.findById(id);
+        return userService.findById(id);
     }
 
     @GET
