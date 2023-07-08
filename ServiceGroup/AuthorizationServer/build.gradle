@@ -1,0 +1,17 @@
+plugins {
+    id 'QuarkusStartPrjs.java-quarkus-conventions'
+    id 'io.quarkus'
+}
+
+group = 'cn.zbw.example.sp4'
+version = 'unspecified'
+
+dependencies {
+    implementation 'io.quarkus:quarkus-redis-client'
+    implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+    implementation("io.quarkus:quarkus-resteasy-reactive")
+    implementation("io.quarkus:quarkus-resteasy-reactive-jackson")
+    testImplementation 'io.quarkus:quarkus-junit5'
+    testImplementation 'org.assertj:assertj-core:3.24.2'
+}
+

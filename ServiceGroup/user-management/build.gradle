@@ -9,6 +9,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.redisson:redisson:3.20.0'
     implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
     implementation 'io.quarkus:quarkus-arc'
     implementation 'io.quarkus:quarkus-hibernate-reactive-panache'

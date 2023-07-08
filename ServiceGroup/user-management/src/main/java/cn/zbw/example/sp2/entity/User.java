@@ -14,7 +14,6 @@ import java.util.List;
 @Cacheable
 @Table(name = "users")
 public class User extends PanacheEntity {
-
     @Column(length = 50, unique = true)
     public String name;
     public String type;

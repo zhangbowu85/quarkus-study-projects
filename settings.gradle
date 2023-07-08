@@ -19,7 +19,7 @@ pluginManagement {
 }
 
 rootProject.name = 'QuarkusStartPrjs'
-include('app', 'list', 'utilities')
+include('list', 'utilities')
 include 'ServiceGroup:RestWithDB'
 findProject(':ServiceGroup:RestWithDB')?.name = 'RestWithDB'
 include 'ServiceGroup:user-management'
@@ -27,4 +27,6 @@ findProject(':ServiceGroup:user-management')?.name = 'user-management'
 include 'RouteService'
 include 'ServiceGroup:RouteService'
 findProject(':ServiceGroup:RouteService')?.name = 'RouteService'
+include 'ServiceGroup:AuthorizationServer'
+findProject(':ServiceGroup:AuthorizationServer')?.name = 'AuthorizationServer'
 
