@@ -3,29 +3,28 @@ package cn.zbw.example.sp2.entity;
 import io.quarkus.hibernate.reactive.panache.PanacheEntity;
 import io.quarkus.hibernate.reactive.panache.PanacheEntityBase;
 import io.smallrye.mutiny.Uni;
-import jakarta.persistence.Cacheable;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.annotation.Nullable;
+import jakarta.persistence.*;
 
+import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Cacheable
 @Table(name = "users")
-public class User extends PanacheEntity {
+public class User extends PanacheEntity implements Serializable {
+
+    private  static final long serialVersionUID = 1L;
+
     @Column(length = 50, unique = true)
     public String name;
     public String type;
 
-    public User() {
-
-    }
-
-    public User(String name, String type) {
-        this.name = name;
-        this.type = type;
-    }
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role")
+    public Set<Role> roles;
 
     public static Uni<User> findByName(String name) {
         return PanacheEntityBase.find("name", name).firstResult();

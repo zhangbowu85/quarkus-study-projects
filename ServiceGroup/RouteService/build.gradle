@@ -9,13 +9,13 @@ repositories {
 }
 
 dependencies {
-    implementation 'io.quarkus:quarkus-container-image-docker'
     implementation 'io.quarkus:quarkus-redis-client'
     implementation 'io.quarkus:quarkus-hibernate-validator'
     implementation 'io.quarkus:quarkus-config-yaml'
     implementation("io.quarkus:quarkus-resteasy-reactive")
     implementation("io.quarkus:quarkus-resteasy-reactive-jackson")
     implementation 'io.quarkus:quarkus-reactive-routes'
+    implementation 'io.quarkus:quarkus-arc'
     implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
     testImplementation 'io.quarkus:quarkus-junit5'
     testImplementation 'org.assertj:assertj-core:3.24.2'

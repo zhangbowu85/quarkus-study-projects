@@ -28,13 +28,20 @@ public class UserResource {
 
     @GET
     public Uni<List<User>> listAll() {
-        return User.listAll();
+        return Panache.withTransaction(() -> {
+            Uni<List<User>> users = User.listAll();
+            return users.onItem().invoke(it -> {
+               it.forEach(user -> user.roles = null);
+            });
+        });
     }
 
     @GET
     @Path("{id}")
     public Uni<User> findById(@RestPath Long id) {
-        return userService.findById(id);
+        return Panache.withTransaction(() -> {
+            return userService.findById(id).onItem().invoke(it -> it.roles = null);
+        });
     }
 
     @GET

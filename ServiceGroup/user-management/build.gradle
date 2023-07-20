@@ -9,7 +9,10 @@ repositories {
 }
 
 dependencies {
+    implementation 'io.quarkus:quarkus-container-image-jib'
     implementation 'org.redisson:redisson:3.20.0'
+    implementation 'io.netty:netty-transport-classes-epoll:4.1.93.Final'
+    implementation 'io.netty:netty-transport-classes-kqueue:4.1.93.Final'
     implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
     implementation 'io.quarkus:quarkus-arc'
     implementation 'io.quarkus:quarkus-hibernate-reactive-panache'
